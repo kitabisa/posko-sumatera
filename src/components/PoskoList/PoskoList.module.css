@@ -1,0 +1,92 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto 6rem;
+    /* Bottom margin for floating bar */
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.regionGroup {
+    margin-bottom: 1rem;
+}
+
+.regionTitle {
+    background-color: #00aeef;
+    /* Blue header */
+    color: white;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: inline-block;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.poskoItem {
+    margin-bottom: 1.5rem;
+}
+
+.poskoName {
+    color: #d32f2f;
+    /* Red name */
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.poskoName::before {
+    content: "■";
+    color: #d32f2f;
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+    vertical-align: middle;
+}
+
+.poskoAddress {
+    color: #333;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+    padding-left: 1.2rem;
+    /* Indent to align with text */
+}
+
+.poskoContact {
+    color: #555;
+    font-size: 0.9rem;
+    padding-left: 1.2rem;
+    font-style: italic;
+    margin-bottom: 0.25rem;
+}
+
+.mapLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: 1.2rem;
+    font-size: 0.85rem;
+    color: #00aeef;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+.mapLink:hover {
+    text-decoration: underline;
+}

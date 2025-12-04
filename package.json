@@ -6,19 +6,25 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "build:worker": "opennextjs-cloudflare build",
+    "deploy": "npm run build && npm run build:worker && opennextjs-cloudflare deploy",
+    "preview": "npm run build && npm run build:worker && opennextjs-cloudflare preview"
   },
   "dependencies": {
+    "lucide-react": "^0.555.0",
     "next": "16.0.7",
     "react": "19.2.0",
     "react-dom": "19.2.0"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.14.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.7",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.52.1"
   }
 }
