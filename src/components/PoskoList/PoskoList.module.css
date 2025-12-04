@@ -62,9 +62,25 @@
     color: #333;
     font-size: 0.9rem;
     line-height: 1.4;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
     padding-left: 1.2rem;
     /* Indent to align with text */
+}
+
+.contactLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #075e54; /* WhatsApp green */
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    transition: color 0.2s;
+}
+
+.contactLink:hover {
+    color: #128c7e; /* Darker WhatsApp green on hover */
+    text-decoration: underline;
 }
 
 .poskoContact {

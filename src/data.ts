@@ -6,6 +6,8 @@ export interface PoskoAPI {
   map_url: string;
   layanan: string;
   bentuk_bantuan: string;
+  no_pic?: string;
+  nama_pic?: string;
 }
 
 export interface Posko {
@@ -46,6 +48,7 @@ export async function fetchPoskoData(): Promise<{ left: RegionGroup[]; right: Re
         address: item.alamat,
         mapUrl: item.map_url,
         service: item.layanan,
+        contact: item.no_pic
       });
     });
 

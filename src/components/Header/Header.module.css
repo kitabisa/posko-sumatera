@@ -8,22 +8,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.logoText {
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: #00aeef; /* Kitabisa blue approx */
-}
-
-.salamSetara {
-  color: #e53935; /* Reddish color */
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
+.logoImage {
+  max-width: 200px;
+  height: auto;
+  object-fit: contain;
 }
 
 .title {
