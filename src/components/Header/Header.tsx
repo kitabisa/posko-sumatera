@@ -1,15 +1,17 @@
 import styles from './Header.module.css';
+import Image from 'next/image';
 
 export default function Header() {
     return (
         <header className={styles.header}>
             <div className={styles.logos}>
-                {/* Mocking the logos with text for now as we don't have the assets */}
-                <span className={styles.logoText}>Kitabisa</span>
-                <span className={styles.salamSetara}>
-                    <span>salam</span>
-                    <span>setara</span>
-                </span>
+                <Image 
+                    src="/logo.png" 
+                    alt="Logo" 
+                    width={200} 
+                    height={50}
+                    className={styles.logoImage}
+                />
             </div>
             <h1 className={styles.title}>DAFTAR POSKO</h1>
             <h2 className={styles.subtitle}>Warga Bantu Warga</h2>

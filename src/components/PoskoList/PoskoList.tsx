@@ -1,6 +1,6 @@
 import { fetchPoskoData, RegionGroup } from '@/data';
 import styles from './PoskoList.module.css';
-import { MapPin, ExternalLink } from 'lucide-react';
+import { MapPin, ExternalLink, MessageCircle } from 'lucide-react';
 
 export default async function PoskoList() {
     const { left, right } = await fetchPoskoData();
@@ -18,6 +18,21 @@ export default async function PoskoList() {
                         {item.service && (
                             <div className={styles.poskoContact}>
                                 Layanan: {item.service}
+                            </div>
+                        )}
+
+                        {/* Display Contact if available */}
+                        {item.contact && (
+                            <div className={styles.poskoContact}>
+                                <a
+                                    href={`https://wa.me/${item.contact.replace(/[^0-9]/g, '')}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={styles.contactLink}
+                                >
+                                    <MessageCircle size={14} />
+                                    <span>Hubungi PIC</span>
+                                </a>
                             </div>
                         )}
 
