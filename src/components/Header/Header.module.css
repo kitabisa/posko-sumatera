@@ -18,12 +18,17 @@
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #d32f2f; /* Red title */
+  font-family: var(--font-sans, Rubik);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  color: #3a3a3a;
   margin: 0;
-  line-height: 1.2;
-  text-transform: uppercase;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: none;
 }
 
 .subtitle {
@@ -34,20 +39,118 @@
 }
 
 .description {
-  font-size: 1rem;
+  font-family: var(--font-sans, Rubik);
+  font-size: 12px;
+  font-weight: 400;
+  font-style: normal;
   color: #333;
   margin: 0;
+  line-height: 17px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Removed lines from description */
+
+.actionCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.actionCard {
+  background: #10A8E5;
+  border-radius: 12px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+  color: white;
+  width: 158px;
+  height: 88px;
+  display: flex;
+  flex-direction: column;
+}
+
+.actionCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 69, 232, 0.3);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.5rem 0.75rem 0;
+}
+
+.cardContent {
+  padding: 0 0.75rem 0.5rem 0.75rem;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.cardIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-.description::before,
-.description::after {
-  content: "";
-  display: block;
-  width: 50px;
-  height: 1px;
-  background-color: #666;
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardText {
+  margin-top: 0.5rem;
+}
+
+.cardTitle {
+  font-family: var(--font-sans, Rubik);
+  font-size: 14px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: white;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardDescription {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrowIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
+
+.arrowIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 }

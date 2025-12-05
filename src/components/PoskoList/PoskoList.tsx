@@ -1,67 +1,82 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import { fetchPoskoData, RegionGroup } from '@/data';
 import styles from './PoskoList.module.css';
-import { MapPin, ExternalLink, MessageCircle } from 'lucide-react';
+import { PoskoCard } from './PoskoCard';
 
-export default async function PoskoList() {
-    const { left, right } = await fetchPoskoData();
+export default function PoskoList() {
+    const [regionGroups, setRegionGroups] = useState<{ left: RegionGroup[], right: RegionGroup[] }>({ left: [], right: [] });
+    const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+
+    useEffect(() => {
+        const loadData = async () => {
+            const data = await fetchPoskoData();
+            setRegionGroups(data);
+        };
+        loadData();
+    }, []);
+
+    // Get all unique regions for the chips
+    const allRegions = Array.from(
+        new Set([
+            ...regionGroups.left.map(g => g.region),
+            ...regionGroups.right.map(g => g.region)
+        ])
+    ).sort();
+
+    // Filter region groups based on selected region
+    const filterRegionGroups = (groups: RegionGroup[]) => {
+        if (!selectedRegion) return groups;
+        return groups.filter(group => group.region === selectedRegion);
+    };
 
     const renderRegion = (group: RegionGroup, index: number) => (
         <div key={index} className={styles.regionGroup}>
-            {group.region && <h3 className={styles.regionTitle}>{group.region}</h3>}
             <div className={styles.list}>
                 {group.items.map((item, idx) => (
-                    <div key={idx} className={styles.poskoItem}>
-                        <div className={styles.poskoName}>{item.name}</div>
-                        <div className={styles.poskoAddress}>{item.address}</div>
-
-                        {/* Display Service if available */}
-                        {item.service && (
-                            <div className={styles.poskoContact}>
-                                Layanan: {item.service}
-                            </div>
-                        )}
-
-                        {/* Display Contact if available */}
-                        {item.contact && (
-                            <div className={styles.poskoContact}>
-                                <a
-                                    href={`https://wa.me/${item.contact.replace(/[^0-9]/g, '')}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={styles.contactLink}
-                                >
-                                    <MessageCircle size={14} />
-                                    <span>Hubungi PIC</span>
-                                </a>
-                            </div>
-                        )}
-
-                        {/* Display Map Link if available */}
-                        {item.mapUrl && (
-                            <a
-                                href={item.mapUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={styles.mapLink}
-                            >
-                                <MapPin size={14} />
-                                Lihat Lokasi
-                                <ExternalLink size={12} />
-                            </a>
-                        )}
-                    </div>
+                    <PoskoCard
+                        key={idx}
+                        region={group.region}
+                        name={item.name}
+                        address={item.address}
+                        contact={item.contact}
+                        mapUrl={item.mapUrl}
+                        services={item.service ? [item.service] : []}
+                    />
                 ))}
             </div>
         </div>
     );
 
     return (
-        <div className={styles.container}>
-            <div className={styles.column}>
-                {left.map(renderRegion)}
+        <div className={styles.wrapper}>
+            <div className={styles.regionChipsContainer}>
+                <div className={styles.regionChips}>
+                    <button
+                        className={`${styles.regionChip} ${!selectedRegion ? styles.regionChipActive : ''}`}
+                        onClick={() => setSelectedRegion(null)}
+                    >
+                        Semua
+                    </button>
+                    {allRegions.map((region) => (
+                        <button
+                            key={region}
+                            className={`${styles.regionChip} ${selectedRegion === region ? styles.regionChipActive : ''}`}
+                            onClick={() => setSelectedRegion(region)}
+                        >
+                            {region}
+                        </button>
+                    ))}
+                </div>
             </div>
-            <div className={styles.column}>
-                {right.map(renderRegion)}
+            <div className={styles.container}>
+                <div className={styles.column}>
+                    {filterRegionGroups(regionGroups.left).map(renderRegion)}
+                </div>
+                <div className={styles.column}>
+                    {filterRegionGroups(regionGroups.right).map(renderRegion)}
+                </div>
             </div>
         </div>
     );
