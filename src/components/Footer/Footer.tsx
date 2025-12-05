@@ -5,19 +5,8 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-          <p className={styles.copyright}>
-          Support oleh:
-          </p>
-        <Image
-          src="/logo.png"
-          alt="Warga Bantu Warga Logo"
-          width={200}
-          height={40}
-          className={styles.logo}
-          priority
-        />
         <p className={styles.copyright}>
-          <b>Disclaimer:</b> Karena kondisi dan kebutuhan di lapangan berubah-ubah maka informasi posko akan selalu di update secara berkala.
+          <b>Disclaimer:</b> Informasi posko berasal dari publik. Mengingat kondisi di lokasi bencana, bisa terjadi perubahan lokasi atau pun informasi lainnya terkait posko.
         </p>
       </div>
     </footer>
