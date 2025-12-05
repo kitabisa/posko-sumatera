@@ -25,7 +25,7 @@ export interface RegionGroup {
 
 export async function fetchPoskoData(): Promise<{ left: RegionGroup[]; right: RegionGroup[] }> {
   try {
-    const res = await fetch('https://n8n.sjk.app/webhook/posko_sumatra', { cache: 'no-store' });
+    const res = await fetch('https://cdn-posko.kitabisa.com/posko.json', { cache: 'no-store' });
     if (!res.ok) {
       throw new Error('Failed to fetch data');
     }
