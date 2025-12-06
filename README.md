@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Posko Sumatera - Warga Bantu Warga
+
+**Posko Sumatera** is a web application dedicated to listing and managing aid posts (Posko) for citizens affected by the Sumatra disaster. It serves as a central hub for sharing location data, contact information, and needs of various relief centers.
+
+## Project Goals
+
+1.  **Centralize Information**: Provide a single, reliable source of truth for active aid posts in the disaster zone.
+2.  **Facilitate Aid Distribution**: Enable donors and volunteers to easily find where help is needed most by viewing detailed requirements for each posko.
+3.  **Community Coordination**: Foster collaboration between "Warga Bantu Warga" (Citizens Helping Citizens) by connecting those who can give with those who need.
+4.  **Accessible Connectivity**: Ensure the platform is lightweight and accessible on mobile devices, even in areas with limited connectivity.
+
+## Technology Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Deployment**: [Cloudflare Workers](https://workers.cloudflare.com/) (via OpenNext)
+- **Language**: TypeScript
+- **Styling**: CSS Modules / Tailwind CSS (if applicable)
+- **Icons**: Lucide React
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js (v20 or later recommended)
+- npm
+
+### Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone <repository-url>
+cd posko
+npm install
+```
+
+### Development
+
+Run the local development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment to Cloudflare
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project relies on `opennextjs-cloudflare` for deploying the Next.js app to Cloudflare Workers.
 
-## Learn More
+### Build & Deploy
 
-To learn more about Next.js, take a look at the following resources:
+To build and deploy the application to your Cloudflare account, run:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run deploy
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This command runs the build process for both Next.js and the Worker, and then uses `wrangler` to deploy.
 
-## Deploy on Vercel
+### Preview
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To preview the worker build locally:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run preview
+```
+
+## Contributing
+
+Contributions are welcome from the community. Please ensure you follow the code of conduct and submit pull requests for any enhancements or bug fixes.
