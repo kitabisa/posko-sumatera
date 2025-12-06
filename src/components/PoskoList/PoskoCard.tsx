@@ -1,4 +1,5 @@
-import { MapPin, MessageCircle } from 'lucide-react';
+import { MapPin } from 'lucide-react';
+import Image from 'next/image';
 import styles from './PoskoList.module.css';
 
 interface PoskoCardProps {
@@ -19,6 +20,7 @@ export function PoskoCard({ region, name, address, contact, mapUrl, services = [
       <div className={styles.cardTitle}>{name}</div>
       <div className={styles.cardAddressLabel}>Alamat :</div>
       <div className={styles.cardAddress}>{address}</div>
+      <div className={styles.addressDivider}></div>
       <div className={styles.cardActions}>
         {contact && (
           <a
@@ -27,7 +29,13 @@ export function PoskoCard({ region, name, address, contact, mapUrl, services = [
             rel="noopener noreferrer"
             className={styles.contactButton}
           >
-            <MessageCircle size={20} />
+            <Image 
+              src="/wa.svg" 
+              alt="WhatsApp" 
+              width={20} 
+              height={20}
+              style={{ marginRight: '8px' }}
+            />
             <span>{contact}</span>
           </a>
         )}
@@ -42,16 +50,6 @@ export function PoskoCard({ region, name, address, contact, mapUrl, services = [
           </a>
         )}
       </div>
-      <div className={styles.cardDivider}></div>
-      {services.length > 0 && (
-        <div className={styles.cardServices}>
-          {services.map((service, idx) => (
-            <span key={idx} className={styles.serviceTag}>
-              ✓ {service}
-            </span>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
