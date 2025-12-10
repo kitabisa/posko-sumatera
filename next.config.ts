@@ -2,7 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ["cdn-posko.kitabisa.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn-posko.kitabisa.com',
+        pathname: '/images/**',
+      },
+    ]
   },
 };
 
