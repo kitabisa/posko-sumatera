@@ -42,6 +42,7 @@ export default function PoskoList() {
                         address={item.address}
                         contact={item.contact}
                         mapUrl={item.mapUrl}
+                        photoUrl={item.photoUrl}
                         services={item.service ? [item.service] : []}
                     />
                 ))}
@@ -57,7 +58,7 @@ export default function PoskoList() {
                         className={`${styles.regionChip} ${!selectedRegion ? styles.regionChipActive : ''}`}
                         onClick={() => setSelectedRegion(null)}
                     >
-                        Semua
+                        All
                     </button>
                     {allRegions.map((region) => (
                         <button
