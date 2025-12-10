@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: 'cdn-posko.kitabisa.com',
         pathname: '/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'imagedelivery.net',
+        pathname: '/**',
+      },
     ]
   },
 };
