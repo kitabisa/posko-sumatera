@@ -8,6 +8,8 @@ export interface PoskoAPI {
   bentuk_bantuan: string;
   no_pic?: string;
   nama_pic?: string;
+  photo_url?: string;
+  
 }
 
 export interface Posko {
@@ -16,6 +18,7 @@ export interface Posko {
   contact?: string; // Kept for compatibility, though API doesn't have it
   mapUrl?: string;
   service?: string;
+  photoUrl?: string;
 }
 
 export interface RegionGroup {
@@ -44,6 +47,7 @@ export async function fetchPoskoData(): Promise<{ left: RegionGroup[]; right: Re
       }
 
       groups[region].push({
+        photoUrl: item.photo_url,
         name: item.nama_posko,
         address: item.alamat,
         mapUrl: item.map_url,

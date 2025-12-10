@@ -8,14 +8,29 @@ interface PoskoCardProps {
   address: string;
   contact?: string;
   mapUrl?: string;
+  photoUrl?: string;
   services?: string[];
 }
 
-export function PoskoCard({ region, name, address, contact, mapUrl, services = [] }: PoskoCardProps) {
+export function PoskoCard({ region, name, address, contact, mapUrl, photoUrl, services = [] }: PoskoCardProps) {
   return (
     <div className={styles.poskoCard}>
+      {photoUrl && (
+        <div className={styles.coverWrapper}>
+          <Image
+            src={photoUrl}
+            alt={name}
+            width={300}
+            height={220}
+            className={styles.coverImage}
+            style={{objectFit: 'cover'}} 
+            priority
+          />
+          <span className={styles.regionBadge + ' ' + styles.regionBadgeOverlay}>{region}</span>
+        </div>
+      )}
       <div className={styles.cardHeader}>
-        <span className={styles.regionBadge}>{region}</span>
+        {!photoUrl && <span className={styles.regionBadge}>{region}</span>}
       </div>
       <div className={styles.cardTitle}>{name}</div>
       <div className={styles.cardAddressLabel}>Alamat :</div>
